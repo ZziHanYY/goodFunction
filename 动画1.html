@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/jquery/dist/jquery.js" type="text/javascript"></script>
+    <style>
+        div{width:100px;height:100px;background:red;}
+    </style>
+</head>
+<body>
+<div></div>
+<script>
+   /* $("div").on("click",function(e){
+        $(this).hide(2000);
+        $("div:hidden").show(2000)
+    }).clone(true).appendTo("body").css({"background":"blue","display":"none"});
+    */
+  /*  $("div").on("click",function(e){
+       $(this).hide(2000,function(){
+           $(this).show(2000)
+       })
+    });*/
+
+  /*$("div").on("click",function(e){
+      $(this).toggle("hide")
+  })
+*/
+ /* $("div").on("click",function(e){
+      $(this).toggle(2000);
+      $("div:hidden").toggle(2000);
+  }).clone(true).css({"background":"blue","display":"none"}).appendTo("body")
+*/
+
+ /*$("div").on("click",function(e){
+     $(this).slideToggle(1000);
+     $("div:hidden").slideToggle(1000)
+ }).clone(true).css("background","blue").appendTo("body").slideToggle(1)*/
+
+   /*$("div").slideUp(2000)*/
+/*
+$("div").on("click",function(e){
+    $(this).fadeOut(2000,function(){
+        $(this).fadeTo(2000,0.7)
+    })
+})
+*/
+/*$("div").on("click",function(e){
+    $(this).fadeOut(2000,function(e){
+
+        $(this).fadeIn(2000)
+    })
+})*/
+
+$("div").on("click",function(e){
+    $(this).fadeToggle(2000);
+    $("div:hidden").fadeToggle(2000);
+}).css("position","absolute").clone(true).css("background","blue").appendTo("body").fadeOut(1)
+
+
+</script>
+</body>
+</html>

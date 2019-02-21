@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width:50px;height:50px;background:red;position:absolute;}
+        div~div{width:50px;height:50px;transition:all 1s;background:black;position:absolute;top:100px;}
+    </style>
+</head>
+<body>
+<div id="div0"></div>
+<div id="div1"></div>
+<script>
+    var div=document.querySelector("#div0");
+    var div1=document.querySelector("#div1");
+    div.addEventListener("mousedown",mouseHandler);
+    function mouseHandler(e){
+        if(e.type==="mousedown"){
+            document.addEventListener("mousemove",mouseHandler)
+            div.addEventListener("mouseup",mouseHandler)
+            document.posi={a:e.offsetX,b:e.offsetY}
+
+        }else if(e.type==="mousemove"){
+            div.style.left=e.x-this.posi.a+"px";
+            div.style.top=e.y-this.posi.a+"px";
+                if(!posi()){
+                    colo();
+                }
+
+        }else if(e.type==="mouseup"){
+            document.removeEventListener("mousemove",mouseHandler)
+            div.removeEventListener("mouseup",mouseHandler)
+        }
+    }
+
+    function posi(){
+        var rect=div.getBoundingClientRect();
+        var rect1=div1.getBoundingClientRect();
+        if(rect.x>=rect1.x && rect.x<=rect1.x+rect1.width && rect.y>=rect1.y && rect.y<=rect1.y+rect1.height)return false
+        if(rect.x+rect.width>=rect1.x && rect.x+rect.width<=rect1.x+rect1.width && rect.y>=rect1.y && rect.y<=rect1.y+rect1.height)return false
+        if(rect.x+rect.width>=rect1.x && rect.x+rect.width<=rect1.x+rect1.width && rect.y+rect.height>=rect1.y && rect.y+rect.height<=rect1.y+rect1.height)return false
+        if(rect.x>=rect1.x && rect.x<=rect1.x+rect1.width && rect.y+rect.height>=rect1.y && rect.y+rect.height<=rect1.y+rect1.height)return false
+        return true
+    }
+    function colo(){
+
+        str="background:rgba(";
+        str+=Math.floor(Math.random()*255)+","
+        str+=Math.floor(Math.random()*255)+","
+        str+=Math.floor(Math.random()*255)+","
+        str+="1)"
+       div1.style=str;
+        div1.style.left=(Math.random()*100).toFixed(1)+"%";
+        div1.style.top=(Math.random()*100).toFixed(1)+"%";
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width:33px;height:33px;
+            background-image:url(image/Actor01-Braver02.png);
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<script>
+    var div,date;
+    var num=0;
+    var bool=false;
+    init();
+    function init(){
+        div=document.querySelector("div");
+
+        window.addEventListener("keydown",keydownHandler);
+        window.addEventListener("keyup",keydownHandler);
+
+
+    }
+
+    function keydownHandler(e){
+
+        if(e.type==="keyup"){
+            bool=false;
+            return
+        }
+
+        bool=true
+
+        switch(e.keyCode){
+            case 37:
+                date=37;
+                div.style.backgroundPositionY=-33+"px";
+          //      div.style.left=div.offsetLeft-5+"px";
+                break;
+            case 38:
+                date=38;
+                div.style.backgroundPositionY="0px";
+              //  div.style.top=div.offsetTop-5+"px";
+                break;
+            case 39:
+                date=39;
+                div.style.backgroundPositionY=-66+"px";
+              //  div.style.left=div.offsetLeft+5+"px";
+                break;
+            case 40:
+                date=40;
+                div.style.backgroundPositionY=-99+"px";
+              //  div.style.top=div.offsetTop+5+"px";
+                break;
+        }
+    }
+
+
+     setInterval(animation,150);
+    function animation(){
+        if(!bool) return
+        num++;
+        if(num>3)num=0
+        switch(date){
+            case 37:
+                div.style.left=div.offsetLeft-5+"px";
+                break;
+            case 38:
+                div.style.top=div.offsetTop-5+"px";
+                break;
+            case 39:
+                div.style.left=div.offsetLeft+5+"px";
+                break;
+            case 40:
+                div.style.top=div.offsetTop+5+"px";
+                break;
+        }
+        div.style.backgroundPositionX=-num*32+"px";
+    }
+</script>
+</body>
+</html>

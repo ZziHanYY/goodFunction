@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/jquery/dist/jquery.js" type="text/javascript"></script>
+</head>
+<body>
+<script>
+    $("<div></div>").css({
+        width:"100px",
+        height:"100px",
+        background:"red",
+        position:"absolute"
+    }).appendTo("body").on("mousedown",function(e){
+        var div=this;
+        var point={x:e.offsetX,y:e.offsetY}
+        $(document).one("mouseup",function(e){
+            $(document).off("mousemove");
+        });
+        $(document).on("mousemove",function(e){
+            div.style.left=e.clientX-point.x+"px";
+            div.style.top=e.clientY-point.y+"px";
+        });
+    });
+
+</script>
+</body>
+</html>

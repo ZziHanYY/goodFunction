@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .div{margin:30px 300px;}
+    </style>
+</head>
+<body>
+<script>
+            function Magnifier(src,size,parent){
+                if(src){
+                    this.src=src;
+                }
+                if(size){
+                    this.size=size
+                }
+                if(parent){
+                    this.parent=parent
+                }
+            }
+            Magnifier.prototype={
+                    _src:"img/a.jpeg",
+                    _size:{width:300,height:300},
+                    _parent:document.body,
+                    cameraLens:null,
+                    box:null,
+                    mouseHandler:null,
+                    bigBox:null,
+                    bigImg:null,
+                    set src (value){
+                        this._src=value;
+                    },
+                    get src (){
+                        return this._src;
+                    },
+                    set size(value){
+                        this._size=value;
+                    },
+                    get size(){
+                        return this._size;
+                    },
+                    set parent(value){
+                        this._parent=value;
+                    },
+                    get parent(){
+                      return this._parent  ;
+                    },
+                    createDiv:function(className){
+                        this.box=document.createElement("div");
+                        this._parent.appendChild(this.box);
+                        this.box.style.width=this._size.width+"px";
+                        this.box.style.height=this._size.height+"px";
+                        this.box.style.position="relative";
+                        this.mouseHandler=this.mouserHandler.bind(this);
+                        this.box.addEventListener("mousedown",this.mouseHandler)
+                        if(className){this.box.className=className;
+                        }else{this.box.className="Magnifier";}
+                        this.box.style.border="1px solid #000";
+                        var img=new Image();
+                        this.box.appendChild(img);
+                        img.style.width="100%";
+                        img.style.height="100%";
+                        img.src=this._src;
+                        this.cameraLens=document.createElement("div");
+                        this.box.appendChild(this.cameraLens);
+                        this.cameraLens.style.width="50px";
+                        this.cameraLens.style.height="50px";
+                        this.cameraLens.style.background="red";
+                        this.cameraLens.style.opacity="0.4";
+                        this.cameraLens.style.position="absolute";
+                        this.cameraLens.style.top="0px"
+                        this.cameraLens.style.display="none";
+
+                    },
+                    mouserHandler:function(e){
+                        if(e.type==="mousedown"){
+                            e.preventDefault();
+                            e.stopPropagation();
+                            this.cameraLens.style.display="block"
+                            this.cameraLens.style.left=(e.offsetX-this.cameraLens.offsetWidth/2)+"px";
+                            this.cameraLens.style.top=(e.offsetY-this.cameraLens.offsetHeight/2)+"px";
+                            document.addEventListener("mousemove",this.mouseHandler)
+                            document.addEventListener("mouseup",this.mouseHandler)
+                            this.createBigDiv()
+                            this.bigImg.style.left=-this.cameraLens.offsetLeft*(this._size.width/this.cameraLens.offsetWidth)+"px";
+                            this.bigImg.style.top=-this.cameraLens.offsetTop*(this._size.height/this.cameraLens.offsetHeight)+"px";
+
+                        }else if(e.type==="mousemove"){
+                            this.cameraLens.style.left=Math.max(0,Math.min(e.x-this.box.offsetLeft-this.cameraLens.offsetHeight/2,this.box.offsetWidth-this.cameraLens.offsetHeight))+"px";
+                            this.cameraLens.style.top=Math.max(0,Math.min(e.y-this.box.offsetTop-this.cameraLens.offsetHeight/2,this.box.offsetHeight-this.cameraLens.offsetHeight))+"px";
+
+                            this.bigImg.style.left=-this.cameraLens.offsetLeft*(this._size.width/this.cameraLens.offsetWidth)+"px";
+                            this.bigImg.style.top=-this.cameraLens.offsetTop*(this._size.height/this.cameraLens.offsetHeight)+"px";
+
+                        }else if(e.type==="mouseup"){
+                            document.removeEventListener("mousemove",this.mouseHandler);
+                            document.removeEventListener("mouseup",this.mouseHandler)
+                            this.cameraLens.style.display="none"
+                            this.bigBox.remove();
+                        }
+                    },
+                    createBigDiv:function(){
+                        this.bigBox=document.createElement("div");
+                        this.box.appendChild(this.bigBox);
+                        this.bigBox.style.border="1px solid #000";
+                        this.bigBox.style.width=this._size.width+"px";
+                        this.bigBox.style.height=this._size.height+"px";
+                        this.bigBox.style.position="absolute";
+                        this.bigBox.style.left="310px";
+                        this.bigBox.style.top="0px";
+                        this.bigBox.style.overflow="hidden";
+                        this.bigImg=new Image();
+                        this.bigBox.appendChild(this.bigImg);
+                        this.bigImg.src=this._src;
+                        this.bigImg.style.position="absolute";
+                        this.bigImg.style.width=(this._size.width/this.cameraLens.offsetWidth)*this.bigBox.offsetWidth+"px";
+                        this.bigImg.style.height=(this._size.height/this.cameraLens.offsetHeight)*this.bigBox.offsetHeight+"px";
+                    }
+
+            };
+
+            var b=new Magnifier(); //传参 传 1路径 2 大小 3父级
+            b.createDiv("div");
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

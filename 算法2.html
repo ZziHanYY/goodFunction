@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function reduce(arr){
+            return arr.reduce((a,b)=>a+b);
+        }
+        function sum(){
+            let a = reduce([...arguments]);
+           
+            function _sum(){
+                let b = reduce([...arguments]);
+                console.log(b)
+                a= a+b;              
+                return _sum;
+            }
+            _sum.valueof=function(){
+                return a
+            }
+            return _sum;
+        }
+
+        // console.log(sum(1,2)(2)(4,5).valueof())
+
+        let arr=['*',5,'*',6,'*',7,'*',8,'*',10,'*',11,'*','*']
+
+          function  ass(arr){
+            let  temp = [];
+            let indexs = arr.indexOf('*');
+            while(~indexs){
+                temp = temp.concat(arr.splice(indexs,1));
+                indexs = arr.indexOf('*')
+            }
+            return [...temp,...arr]
+          }  
+
+        console.log(ass(arr))
+    </script>
+</body>
+</html>

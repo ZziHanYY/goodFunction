@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div0{width:600px;height:300px;border:1px solid #000;background-image:url(images/2.jpg);background-size:100% 100%;position:relative;}
+        #div1{width:60px;height:60px;background:pink;opacity:0.4;position:absolute;}
+    </style>
+</head>
+<body>
+<div id="div0"><div id="div1"></div></div>
+<img src="images/2.jpg" alt="">
+<script>
+    var div1=document.querySelector("#div1");
+    div1.addEventListener("mousedown",mouserHandler);
+
+    function mouserHandler(e){
+        if(e.type==="mousedown"){
+            document.addEventListener("mousemove",mouserHandler)
+            document.addEventListener("mouseup",mouserHandler);
+            document.child=this;
+        }else if(e.type==="mousemove"){
+            console.log(this.child.style)
+            this.child.style.left=e.x+"px";
+            this.child.style.top=e.y+"px";
+        }else if(e.type==="mouseup"){
+            document.removeEventListener("mousemove",mouserHandler);
+            document.removeEventListener("mouseup",mouserHandler);
+            document.child=null;
+        }
+    }
+</script>
+</body>
+</html>

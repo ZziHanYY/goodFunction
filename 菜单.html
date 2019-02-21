@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    *{padding:0;margin:0;}
+    ul{list-style:none}
+
+    li{width:150px;height:50px;background:red;float:left;text-align:center;line-height:50px;font-size:30px;color:#fff;}
+        li:hover{background:blue;}
+        li>ul{display:none;}
+    </style>
+</head>
+<body>
+<ul id="ul">
+    <li>漫威
+        <ul>
+            <li>2</li>
+            <li>1gggg</li>
+            <li>1ff</li>
+            <li>1a</li>
+        </ul>
+    </li>
+    <li>中国</li>
+    <li>动漫</li>
+    <li>DC</li>
+    <li>RNG</li>
+    <li>异地鸡</li>
+</ul>
+<script>
+    var lis=document.querySelectorAll("#ul>li");
+    console.log(lis);
+    for(i=0;i<lis.length;i++){
+        lis[i].addEventListener("click",clickHandler);
+        lis[i].addEventListener("mouseleave",mouseoutHandler);
+    }
+    function clickHandler(e){
+        this.firstElementChild.style.display="block";
+    }
+    function mouseoutHandler(e){
+        this.firstElementChild.style.display="none";
+    }
+</script>
+</body>
+</html>

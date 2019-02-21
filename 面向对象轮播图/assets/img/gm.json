@@ -1,0 +1,102 @@
+{"frames": [
+
+{
+	"filename": "gm_title",
+	"frame": {"x":123,"y":79,"w":38,"h":21},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":21},
+	"sourceSize": {"w":38,"h":21},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "king_title",
+	"frame": {"x":79,"y":79,"w":42,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":42,"h":42},
+	"sourceSize": {"w":42,"h":42},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "main_kuaisile",
+	"frame": {"x":1,"y":1,"w":100,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":60},
+	"sourceSize": {"w":100,"h":60},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "npc_accept",
+	"frame": {"x":103,"y":1,"w":76,"h":76},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":76,"h":76},
+	"sourceSize": {"w":76,"h":76},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "npc_done",
+	"frame": {"x":1,"y":63,"w":76,"h":76},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":76,"h":76},
+	"sourceSize": {"w":76,"h":76},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "pixes_hp_b",
+	"frame": {"x":181,"y":67,"w":64,"h":8},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":8},
+	"sourceSize": {"w":64,"h":8},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "pixes_hp_d",
+	"frame": {"x":181,"y":77,"w":64,"h":8},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":8},
+	"sourceSize": {"w":64,"h":8},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "self",
+	"frame": {"x":79,"y":63,"w":12,"h":12},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":12,"h":12},
+	"sourceSize": {"w":12,"h":12},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "sf_image",
+	"frame": {"x":163,"y":87,"w":24,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":32},
+	"sourceSize": {"w":24,"h":32},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "shadow_p",
+	"frame": {"x":181,"y":1,"w":64,"h":64},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
+	"sourceSize": {"w":64,"h":64},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "gm.png",
+	"format": "RGBA8888",
+	"size": {"w":256,"h":140},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:8f7d63f871fb1f5ac8bf2944c8ff078c:1a6fd8b6b84f6a306f2dc88e42265e87:4e68a08eb0b53e53f015a9619446a3b2$"
+}
+}

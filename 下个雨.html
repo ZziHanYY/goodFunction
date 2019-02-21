@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width:8px;height:13px;border-radius:50%;position:absolute;}
+
+
+    </style>
+</head>
+<body>
+<script>
+    class Rain{
+        constructor(){
+            this.a=null;
+    }
+        creatRain(_color,_left,_opcity){
+           this.a=document.createElement("div");
+           document.body.appendChild(this.a);
+           this.a.style.left=_left+"px";
+           this.a.style.top="-20px";
+            this.a.style.background=_color;
+            this.a.style.opacity=(1-_opcity*0.1);
+            return this.a
+    }
+        update(_n){
+            let tops=parseFloat(this.a.offsetTop);
+            if(tops>=document.documentElement.clientHeight-this.a.offsetHeight){
+                this.a.remove();
+                this.a=null;
+                return;
+            }
+               _n+=0.4;
+            this.a.style.top=this.a.offsetTop+_n+"px";
+        }
+    }
+    function color(){
+        let str="#";
+        str+=((Math.floor(Math.random()*256)).toString(16)).padEnd(2,"0");
+        str+=((Math.floor(Math.random()*256)).toString(16)).padEnd(2,"0");
+        str+=((Math.floor(Math.random()*256)).toString(16)).padEnd(2,"0");
+        return str;
+    }
+    function rainLeft(){
+        return Math.floor(Math.random()*1366);
+    }
+    function rainSpeed(){
+        return Math.ceil(Math.random()*9);
+    }
+    document.documentElement.style.overflow="hidden"
+
+    let arr=[];
+    let time=8; //控制下雪的大小 疏密
+
+    animation();
+    function animation(){
+       requestAnimationFrame(animation);
+
+        time--;
+        if(time===0){
+            createRains();
+            time=8;
+        }
+
+       let list=[];
+        for(let i=0;i<arr.length;i++){
+            arr[i].update(rainSpeed());
+            if(arr[i].a){
+                list.push(arr[i]);
+            }else{
+                arr[i]=null;
+            }
+        }
+        arr=null;
+        arr=list;
+    }
+
+
+
+    function createRains(){
+        for(i=0;i<5;i++){
+            let rain=new Rain();
+            rain.creatRain(color(),rainLeft(),rainSpeed());
+            arr.push(rain);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /*  let arr=[];
+    let time=2;
+    animation();
+    function animation() {
+        requestAnimationFrame(animation);
+        time--;
+        if(time===0){
+            createRains();
+            time=2;
+        }
+        let list=[];
+        for(let i=0;i<arr.length;i++){
+            arr[i].update(rainSpeed());
+            if(arr[i].a){
+                list.push(arr[i]);
+            }else{
+                arr[i]=null;
+            }
+        }
+        arr=null;
+        arr=list;
+    }
+
+    function createRains() {
+        for(let i=0;i<5;i++){
+            let rain=new Rain();
+            rain.creatRain(color(),rainLeft(),rainSpeed());
+            arr.push(rain);
+        }
+
+    }*/
+</script>
+</body>
+</html>

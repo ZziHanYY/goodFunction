@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .commodity{
+            width:180px;
+            height:60px;
+            position:relative;
+            border:1px solid #000;
+            float:left;
+        }
+        .commodity>img{
+            height:50px;
+            margin-top:5px;
+            margin-left:5px;
+            position:absolute;
+        }
+        .commodity>div{
+            width:125px;
+            left:50px;
+            text-align:center;
+            font-size:20px;
+            position:absolute;
+        }
+        .commodity>span{
+            width:125px;
+            left:50px;
+            top:30px;
+            text-align:center;
+            position:absolute;
+        }
+        .conter{
+            width: 130px;
+            height: 30px;
+            margin: auto;
+            position: relative;
+        }
+        .conter>button{
+            width:30px;
+            height:30px;
+            outline:none;
+            background:#fff;
+            text-align:center;
+            border:1px solid #000;
+        }
+        .conter>input{
+            width:60px;
+            height:30px;
+            outline:none;
+            box-sizing:border-box;
+            border:1px solid #000;
+            border-left:none;
+            border-right:none;
+            text-align:center;
+            text-align:center;
+        }
+        table{
+            width:500px;
+            border-collapse:collapse;
+            position:absolute;
+            top:150px;
+            left:30px;
+        }
+        td,th{
+            border:1px solid #000;
+            text-align:center;
+        }
+        td>img{
+            width:25px;
+            height:25px;
+            margin-top:5px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    var data=[
+           {id:1001,icon:"img/1.png",name:"餐饮0",num:1,price:10},
+           {id:1002,icon:"img/2.png",name:"餐饮1",num:1,price:20},
+           {id:1003,icon:"img/3.png",name:"餐饮2",num:1,price:30},
+           {id:1004,icon:"img/4.png",name:"餐饮3",num:1,price:40},
+           {id:1005,icon:"img/5.png",name:"餐饮4",num:1,price:50},
+           {id:1006,icon:"img/6.png",name:"餐饮5",num:1,price:60},
+           {id:1007,icon:"img/7.png",name:"餐饮6",num:1,price:70},
+           {id:1008,icon:"img/8.png",name:"餐饮7",num:1,price:80},
+           {id:1009,icon:"img/9.png",name:"餐饮8",num:1,price:90},
+           {id:1010,icon:"img/10.png",name:"餐饮9",num:1,price:100}
+       ];
+       localStorage.shopData=JSON.stringify(data);
+
+    var table,shopArray;
+    const CREATE_NEW_DATA="create_new_data";
+    const SET_INPUT_VALUE="set_input_value";
+    const DALETE_DATA_BN="dalete_data_bn";
+    const CHECKD_CHANGE_ALL="checked_change_all";
+
+    init();
+    function init(){
+        var shopData=JSON.parse(localStorage.shopData);
+        if(localStorage.shopArray){
+            shopArray=JSON.parse(localStorage.shopArray);
+        }else{
+            shopArray=[];
+        }
+        document.addEventListener(CREATE_NEW_DATA,creatNewDataHandler)
+        document.addEventListener(SET_INPUT_VALUE,setInputValueHandler)
+        document.addEventListener(DALETE_DATA_BN,bnDeteleDataHandler)
+        document.addEventListener(CHECKD_CHANGE_ALL,checkdChangeAllHanlder)
+       for(var i=0;i<shopData.length;i++){
+           createDiv(shopData[i],document.body)
+       }
+        createTable();
+    }
+
+
+
+    /*创建 商品 标签 参数1是带进的数组，参数2是要放进的父元素
+    * */
+    function createDiv(data,parent){
+        var div=document.createElement("div");
+        div.className="commodity"
+        parent.appendChild(div);
+        var img=new Image();
+        img.src=data.icon;
+        div.appendChild(img);
+        var div1=document.createElement("div");
+        div1.textContent=data.name
+        div.appendChild(div1);
+        var span=document.createElement("span");
+        span.textContent=data.price+"元";
+        div.appendChild(span)
+        div.addEventListener("click",clickHandler)
+        div.data=data;
+        return div
+    }
+
+    // 抛发
+    function clickHandler(e){
+        var evt=new Event(CREATE_NEW_DATA);
+        evt.data=this.data;
+        document.dispatchEvent(evt);
+    }
+
+    /*这个是创建数据 点击物品栏 会把物品栏的数据存在 shopArray 中
+    接收 createDiv抛发出的函数
+    * */
+    function creatNewDataHandler(e){
+       var obj={select:false};
+        for(var prop in e.data){
+           obj[prop]=e.data[prop]
+        }
+        obj.sum=obj.num*obj.price
+        obj.deleted=false;
+        var arr=shopArray.filter(function(item){
+            return item.id===obj.id
+        })
+        if(arr.length===0){
+            shopArray.push(obj)
+        }else{
+            arr[0].num++;
+            arr[0].sum=arr[0].num*arr[0].price
+        }
+        createTable();
+
+    }
+
+    /*创建计数器
+    *参数1是，父级元素 参数2是传入的数据
+    * */
+    function createCounter(parsent,data){
+        var div=document.createElement("div");
+        div.className="conter";
+        parsent.appendChild(div);
+        var bnleft=document.createElement("button");
+        bnleft.textContent="-";
+        div.appendChild(bnleft);
+        var input=document.createElement("input");
+        input.type="text";
+        input.value="1";
+        div.appendChild(input);
+        var bnright=document.createElement("button");
+        bnright.textContent="+";
+        div.appendChild(bnright);
+        div.input=input;
+        div.data=data
+        bnright.addEventListener("click",bnClickHandler);
+        bnleft.addEventListener("click",bnClickHandler);
+        input.addEventListener("input",inputHandler);
+        input.addEventListener("blur",inputHandler);
+        return div;
+    }
+
+    /*计数器的 按钮 以及输入框的正则验证
+    继续抛发 这次抛发的是 input的value值
+    * */
+    function bnClickHandler(e){
+        var input=this.parentElement.input;
+        if(this.textContent=="-"){
+            if(parseInt(input.value)===1)return
+            input.value=parseInt(input.value)-1
+        }else if(this.textContent=="+"){
+            if(parseInt(input.value)===99)return
+            input.value=parseInt(input.value)+1
+        }
+        var evt=new Event(SET_INPUT_VALUE);
+        evt.data=this.parentElement.data;
+        evt.num=parseInt( this.parentElement.input.value);
+        document.dispatchEvent(evt);
+    }
+    function inputHandler(e){
+        if(e.type==="input"){
+            this.value=this.value.replace(/\D/g,"");
+            if(this.value==="0"||this.value.length===0){
+                this.value="1";
+            }else if(this.value.length>2){
+                this.value="99";
+            }
+        }else if(e.type==="blur"){
+            var evt=new Event(SET_INPUT_VALUE);
+            evt.num=parseInt(this.value);
+            evt.data=this.parentElement.data;
+            document.dispatchEvent(evt)
+        }
+    }
+
+    /*侦听计数器按钮和input框抛发的事件
+    接收 抛发的 input框的value值和 data数据
+    * */
+    function setInputValueHandler(e){
+        /*shopArray.map(function (item) {
+            if(item.id===e.data.id){
+                item.num=e.num;
+                item.sum=item.price*item.num;
+            }
+        });*/
+        shopArray.forEach(function(item){
+            if(item.id===e.data.id){
+                item.num=e.num;
+                item.sum=item.num*item.price;
+            }
+        });
+        localStorage.shopArray=JSON.stringify(shopArray);
+        createTable();
+    }
+
+
+    /*创建table表格，
+    * */
+    function createTable(){
+            if(table){
+                table.remove();
+            }
+            if(shopArray.length===0)return
+         table=document.createElement("table");
+        document.body.appendChild(table);
+        var tr=document.createElement("tr");
+        table.appendChild(tr);
+        for(var str in shopArray[0]){
+            var th=document.createElement("th");
+            if(str==="select"){
+                var check=document.createElement("input");
+                    check.type="checkbox";
+                    check.checked = getAllCheckde();
+                    check.addEventListener("change",checkChanngeHandler)
+                    th.appendChild(check)
+            }else{
+                th.textContent=str
+            }
+
+            tr.appendChild(th);
+        }
+        for(i=0 ;i<shopArray.length;i++){
+            var tr=document.createElement("tr");
+            for(var prop in shopArray[i]){
+                var td=document.createElement("td");
+                 td.data=shopArray[i];
+                addTdContent(td,shopArray[i],prop)
+                tr.appendChild(td);
+            }
+            table.appendChild(tr);
+        }
+    }
+
+    /*创建 Td样式函数
+    * */
+    function addTdContent(item,parent,str){
+        switch(str){
+            case"icon":
+                var img=new Image();
+                img.src=parent.icon;
+                item.appendChild(img);
+                break
+            case"num":
+                var inputValue=createCounter(item,parent)
+                inputValue.input.value=parent.num;
+                break;
+            case"deleted":
+                var bn=document.createElement("button");
+                bn.textContent="删除";
+                bn.data=parent;
+                bn.addEventListener("click",deleteBnClickHandler)
+                item.appendChild(bn);
+                break;
+            case"select":
+                var check=document.createElement("input");
+                check.addEventListener("change",checkChanngeHandler)
+                check.type="checkbox";
+                check.checked=parent.select;
+                item.appendChild(check);
+                break;
+            default:
+                item.textContent=parent[str];
+                break;
+        }
+    }
+
+    /*1.删除按钮的点击事件，点击删除数据 重新创建表格
+       2. 抛法删除事件
+    * */
+    function deleteBnClickHandler(e){
+       /* 1.这个是不用写侦听 删除数据重新创立表格 比写侦听容易理解
+       但是 据老师意思 这个函数独立性差 修改麻烦 */
+     /*  var deleteData=this.parentElement.data;
+        shopArray=shopArray.filter(function(item){
+            return item.id!==deleteData.id
+        })
+        createTable();*/
+
+       //2.下面代码是抛法删除事件
+        var evt=new Event(DALETE_DATA_BN);
+        evt.data=this.parentElement.data;
+        document.dispatchEvent(evt);
+    }
+
+    /*侦听删除按钮抛发出的事件函数，筛选新的shopArray 并重新创建表格*/
+    function bnDeteleDataHandler(e){
+        shopArray=shopArray.filter(function(item){
+            return item.id!==e.data.id
+        })
+        localStorage.shopArray=JSON.stringify(shopArray);
+        createTable();
+    }
+
+    /*复选框全选 复选框CHANGE事件 改变就抛发 继续抛发—_—!!
+    * */
+    function checkChanngeHandler(e){
+      /*  this.checked=!this.checked;
+        console.log(this.checked)
+        var bool=this.parentElement.data;
+        if(!bool){
+            shopArray.map(function(item){
+                item.select=true;
+            })
+        }else if(bool){
+            shopArray.map(function (item) {
+                if(item.id===bool.id){
+                    item.select=e.select;
+                }
+            })           //作死 自己写 写到崩溃 垃圾吧到吧
+        }
+        createTable();*/
+      var evt=new Event(CHECKD_CHANGE_ALL);
+      evt.all=!this.parentElement.data;
+      evt.select=this.checked;
+      evt.data=this.parentElement.data;
+      document.dispatchEvent(evt);
+    }
+
+    /*监听 复选框抛发出去的事件函数 判断是全选还是单选
+    * */
+    function checkdChangeAllHanlder(e){
+        if(e.all){
+            shopArray.map(function(item){
+                item.select=e.select;
+            })
+        }else{
+            shopArray.map(function(item){
+              if(item.id===e.data.id){
+                  item.select=e.select;
+              }
+            })
+        }
+        localStorage.shopArray=JSON.stringify(shopArray);
+        createTable();
+    }
+
+    /*全选函数 当复选框 全选时  全选框选中
+    全选框的选中 不是由自己跟数据判断，是由下面的函数 也就是后面复选框的选中判断
+    * */
+    function getAllCheckde(){
+        var arr=shopArray.filter(function(item){
+            return !item.select;
+        })
+        return arr.length===0;
+    }
+
+</script>
+</body>
+</html>

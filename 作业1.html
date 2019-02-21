@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Shop(){
+
+    }
+    Shop.prototype={
+        createShopList:function(parent,src,price,num,text1,text2,text3){
+            var div=document.createElement("div");
+            if(parent){
+                parent.appendChild(div)
+            }else{
+                document.body.appendChild(div)
+            }
+            div.style.width="280px";
+            div.style.height="290px";
+            div.style.background="#f7f7f9";
+            div.style.position="relative";
+            div.style.top="130px"
+            div.style.margin="0 10px";
+            div.style.float="left";
+            div.addEventListener("mouseenter",this.mouserHandler)
+            div.addEventListener("mouseleave",this.mouserHandler)
+            var div0=document.createElement("div")
+            div.appendChild(div0);
+            div0.style.width="155px";
+            div0.style.height="155px";
+            div0.style.background="#b2c05a"
+            div0.style.transform="rotate(45deg)";
+            div0.style.position="absolute";
+            div0.style.left="62px";
+            div0.style.top="-77px";
+            div0.style.boxShadow= "3px -3px 0px #888";
+            div0.style.overflow="hidden"
+            var img=new Image();
+            div0.appendChild(img);
+            img.style.width="100%";
+            img.style.height="100%";
+            img.style.borderRadius="50%";
+            img.style.transform="rotate(-45deg)";
+            if(src){
+                img.src=src
+            }else{
+                img.src="//img10.360buyimg.com/babel/s150x150_jfs/t16144/189/189260191/396454/b6b9bbe8/5a2a5d9eNa14dd892.jpg!q80.webp"
+            }
+            var div1=document.createElement("div")
+            div.appendChild(div1);
+            div1.style.width="80px";
+            div1.style.height="80px";
+            div1.style.backgroundImage="url(//static.360buyimg.com/mtd/pc/fresh_v3/1.0.0/home/images/sprite_fresh_index.png)";
+            div1.style.position="absolute";
+            div1.style.top="-120px"
+            var p0=document.createElement("p");
+            div1.appendChild(p0);
+            p0.style.color="#fff";
+            p0.style.textAlign="center";
+            p0.style.margin="20px auto 6px";
+            p0.style.height="20px";
+            p0.style.whiteSpace="nowrap";
+            p0.style.overflow="hidden";
+            if(price){
+                p0.textContent=price;
+            }else{
+                p0.textContent="暂无报价";
+                p0.style.fontWeight="bold";
+            }
+            var p1=document.createElement("p");
+            div1.appendChild(p1);
+            p1.style.color="#fff";
+            p1.style.width="57px";
+            p1.style.textAlign="center";
+            p1.style.margin="0px auto";
+            p1.style.lineHeight="22px";
+            p1.style.fontSize="12px";
+            p1.style.borderTop="1px solid #fff";
+            p1.style.whiteSpace="nowrap";
+            p1.style.overflow="hidden";
+            if(num){
+                p1.textContent=num;
+            }else{
+                p1.textContent="价格随动";
+            }
+            var p2=document.createElement("p");
+            div.appendChild(p2);
+            p2.style.color="#b49966";
+            p2.style.margin="auto"
+            p2.style.textAlign="center";
+            p2.style.height="24px";
+            p2.style.fontSize="16px";
+            p2.style.whiteSpace="nowrap";
+            p2.style.overflow="hidden";
+            p2.style.marginTop="140px";
+            if(text1){
+                p2.textContent=text1;
+            }else{
+                p2.textContent="上面的图片是假的！网上找的";
+            }
+            var i=document.createElement("i")
+            div.appendChild(i);
+            i.style.display="block";
+            i.style.height="1px";
+            i.style.margin="15px 20px";
+            i.style.width="240px";
+            i.style.background="#eee";
+            var p3=document.createElement("p");
+            div.appendChild(p3);
+            p3.style.color="#000";
+            p3.style.width="240px";
+            p3.style.margin="8px 0 0 20px "
+            p3.style.textAlign="left";
+            p3.style.height="27px";
+            p3.style.fontSize="18px";
+            p3.style.whiteSpace="nowrap";
+            p3.style.overflow="hidden";
+            if(text2){
+                p3.textContent=text2;
+            }else{
+                p3.textContent="知道为什么吗？";
+            }
+            var p4=document.createElement("p");
+            div.appendChild(p4);
+            p4.style.color="#909090";
+            p4.style.width="240px";
+            p4.style.margin="8px 0 0 20px ";
+            p4.style.textAlign="left";
+            p4.style.height="42px";
+            p4.style.fontSize="14px";
+            if(text3){
+                p4.textContent=text3;
+            }else{
+                p4.textContent="因为你没写参数";
+            }
+        },
+        mouserHandler:function(e){
+            console.log(this.style.top)
+            if(e.type==="mouseenter"){
+                this.style.top="120px";
+            }else if(e.type==="mouseleave"){
+                this.style.top="130px";
+            }
+        }
+    }
+    var ba=new Shop();
+    //7个参数 1是父级元素 2是图片地址 3是价格 4是数量 5 6 7是简介
+    ba.createShopList()
+    ba.createShopList()
+    ba.createShopList()
+    ba.createShopList()
+</script>
+</body>
+</html>

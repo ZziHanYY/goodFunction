@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="assets/js/Broadcast.js"></script>
+</head>
+<body>
+<script>
+    //左右按钮地址["assets/img/left.png","assets/img/right.png"]
+    //第一组图片 w960 h320["assets/img/a.png","assets/img/b.png","assets/img/c.png","assets/img/d.png","assets/img/e.png"];
+    //第一组图片 w500 h300["assets/img/1.jpg","assets/img/2.jpg","assets/img/3.jpg","assets/img/4.jpg","assets/img/5.jpg","assets/img/6.jpg","assets/img/7.jpg"];
+        var arr=["assets/img/a.png","assets/img/b.png","assets/img/c.png","assets/img/d.png","assets/img/e.png"];
+       var arr1=["assets/img/1.jpg","assets/img/2.jpg","assets/img/3.jpg","assets/img/4.jpg","assets/img/5.jpg","assets/img/6.jpg","assets/img/7.jpg"]
+
+    var check=new Broadcast(document.body,arr,["assets/img/left.png","assets/img/right.png"])
+   // var check2=new Broadcast(document.body,arr1,["assets/img/left.png","assets/img/right.png"])
+          check.source=arr1
+        // check.width=400
+       // check.height=100
+    animation();
+    function animation(){
+            requestAnimationFrame(animation)
+            check.update()
+          //  check2.update()
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #rollImage{
+            width:960px;
+            height:320px;
+            background:black;
+            margin:auto;
+            position:relative;
+            overflow:hidden;
+        }
+        #left{
+            position:absolute;
+            top:130px;
+            left:5px;
+        }
+        #right{
+            position:absolute;
+            top:130px;
+            right:5px;
+        }
+        #box{
+            position:absolute;
+            transition:all 1s;
+        }
+        #point{
+            position:absolute;
+            list-style:none;
+            bottom:10px;
+        }
+        li{
+            width:15px;
+            height:15px;
+            border:1px solid #000;
+            border-radius:50%;
+            margin:0 5px;
+            float:left;
+        }
+    </style>
+</head>
+<body>
+<div id="rollImage">
+    <div id="box"></div>
+    <img src="image/left.png" id="left">
+    <img src="image/right.png" id="right">
+    <ul id="point"></ul>
+</div>
+<script>
+    var box,left,right,point;
+    var num=0;
+    var arr=["a.jpeg","b.jpeg","c.jpeg","d.jpeg","e.jpeg"];
+    var pro
+    init();
+    function init(){
+        point=document.querySelector("#point")
+        for(i=0;i<arr.length;i++){
+            var img=new Image();
+            img.src="image/"+arr[i];
+            img.style.width="960px";
+            img.style.height="320px";
+            box=document.querySelector("#box");
+            box.appendChild(img);
+            var li=document.createElement("li");
+            point.appendChild(li);
+        }
+        box.style.width=960*arr.length+"px";
+        box.style.left="0px";
+        point.style.left=(960-point.offsetWidth)/2+"px";
+        left=document.getElementById("left");
+        right=document.getElementById("right");
+        left.addEventListener("click",bnclickHandler);
+        right.addEventListener("click",bnclickHandler);
+        point.addEventListener("click",pointclickHandler);
+        pro=point.firstElementChild
+        pro.style="background:rgba(0,0,0,0.8);"
+    }
+    function pointclickHandler(e){
+        console.log(e.target)
+        for(i=0;i<point.children.length;i++){
+            if(point.children[i]===e.target){
+                num=i;
+            }
+        }
+        box.style.left=-num*960+"px";
+        color();
+    }
+
+    function bnclickHandler(e){
+        if(this===left){
+            num--;
+            if(num<0)num=arr.length-1
+            console.log(num);
+            box.style.left=-num*960+"px";
+            color()
+        }else if(this===right){
+
+
+            num++;
+            if(num===arr.length)num=0
+            console.log(num)
+            box.style.left=-num*960+"px";
+            color()
+        }
+    }
+
+    function color(){
+        pro.style="background:rgba(0,0,0,0);"
+        pro=point.children[num];
+        pro.style="background:rgba(0,0,0,0.8);"
+    }
+</script>
+</body>
+</html>

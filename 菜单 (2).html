@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/jquery/dist/jquery.js" type="text/javascript"></script>
+    <style>
+        *{margin:0;padding:0;}
+        ul{list-style:none;}
+        .menu{float:left;margin:0 20px;cursor:default;}
+        li{width:60px;height:30px;background:skyblue;line-height:30px;text-align:center;border:1px solid #ccc;}
+        /*.menuList{display:none;}*/
+
+    </style>
+</head>
+<body>
+    <ul class="sss">
+        <li class="menu">河北
+            <ul class="menuList">
+                <li>定州</li>
+                <li>石家庄</li>
+                <li>保定</li>
+                <li>秦皇岛</li>
+                <li>张家口</li>
+                <li>邯郸</li>
+                <li>衡水</li>
+            </ul>
+        </li>
+        <li class="menu">河南
+            <ul class="menuList">
+                <li>开封</li>
+                <li>洛阳</li>
+                <li>驻马店</li>
+                <li>鹤壁</li>
+                <li>郑州</li>
+                <li>新乡</li>
+            </ul>
+        </li>
+        <li class="menu">四川
+            <ul class="menuList">
+                <li>成都</li>
+                <li>攀枝花</li>
+                <li>汶川</li>
+                <li>玉树</li>
+                <li>玉树</li>
+                <li>玉树</li>
+            </ul>
+        </li>
+        <li class="menu">河北
+            <ul class="menuList">
+                <li>定州</li>
+                <li>石家庄</li>
+                <li>保定</li>
+                <li>秦皇岛</li>
+                <li>张家口</li>
+                <li>邯郸</li>
+                <li>衡水</li>
+            </ul>
+        </li>
+        <li class="menu">河南
+            <ul class="menuList">
+                <li>开封</li>
+                <li>洛阳</li>
+                <li>驻马店</li>
+                <li>鹤壁</li>
+                <li>郑州</li>
+                <li>新乡</li>
+            </ul>
+        </li>
+        <li class="menu">四川
+            <ul class="menuList">
+                <li>成都</li>
+                <li>攀枝花</li>
+                <li>汶川</li>
+                <li>玉树</li>
+                <li>玉树</li>
+                <li>玉树</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+<script>
+    $(".menuList").slideToggle(1);
+   /* $(".menu").hover(function(){
+        $(this).children().first().fadeToggle(1000)
+    },function(){
+        $(this).children().first().slideToggle(1000)
+    })*/
+    /*var div;
+    $(".menu").on("click",function(e){
+        if(div!==e.target){
+            $(div).children().first().slideUp(1000)
+        }
+        $(this).children().first().slideToggle(1000)
+        div=e.target
+    })*/
+
+    var div;
+    var bool=false;
+    $(".menu").on("click",function(e){
+        bool=!bool
+        if(bool){
+            $(this).children().first().slideToggle(1000)
+        }else{
+            $(this).children().first().slideToggle(1000)
+        }
+        if(div!==this){
+            $(div).children().first().slideUp(1000);
+        }
+        div=e.target
+    })
+</script>
+</html>

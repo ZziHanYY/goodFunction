@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    </style>
+</head>
+<body>
+    <script>
+    	let myData = [{id:0}];
+    	async function fetchData(dataSet) {
+    		const list = dataSet.map(t => {
+    			return fetch(`http://localhost:3002`,{mode:'no-cors'})
+    					.then(res => console.log(res));
+    		});
+    		const result = await Promise.all(list);
+    	
+    	
+    	}
+    	fetchData(myData);
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

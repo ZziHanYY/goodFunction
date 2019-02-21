@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width:50px;height:50px;background:red;border-radius:50%;position:absolute;}
+
+
+    </style>
+</head>
+<body>
+<div></div>
+<script>
+    let div=document.querySelector("div");
+    document.documentElement.style.overflow="hidden";
+    let acc=1;
+    let bool=false;
+    div.addEventListener("click",clickHandler);
+    function clickHandler(e){
+        animation();
+    }
+    function animation(){
+        requestAnimationFrame(animation);
+        if(div.offsetTop>=document.documentElement.clientHeight-div.offsetHeight){
+           acc=-Math.abs(acc)
+       }
+       acc+=0.6;                 //弹跳
+        div.style.top=div.offsetTop+acc+"px";
+    }
+
+
+
+</script>
+</body>
+</html>

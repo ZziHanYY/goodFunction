@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div0{width:50px;height:50px;background:red;position:absolute;top:0px;}
+        #div1{width:50px;height:50px;background:black;position:absolute;top:100px;}
+        #div2{width:50px;height:50px;background:blue;position:absolute;top:200px;}
+
+    </style>
+</head>
+<body>
+<div id="div0"></div>
+<div id="div1"></div>
+<div id="div2"></div>
+<script>
+    let div0,div1,div2;
+    let bool=false;
+    var num1=2;
+    var num2=3;
+    var num3=6;
+    init();
+    function init(){
+        div0=document.querySelector("#div0");
+        div1=document.querySelector("#div1");
+        div2=document.querySelector("#div2");
+        div0.addEventListener("click",clickHandler);
+        div1.addEventListener("click",clickHandler);
+        div2.addEventListener("click",clickHandler);
+
+    }
+    function clickHandler(e){
+        bool=!bool
+        if(bool) {
+            animation();
+        }
+        if(!bool){
+            cancelAnimationFrame(id);
+        }
+    }
+    function animation(){
+        id=requestAnimationFrame(animation);
+        fastRun();
+        middleRun();
+        slowRun();
+    }
+    function fastRun(){
+        num1--;
+        if(num1)return;
+        div0.style.left=div0.offsetLeft+2+"px";
+        num1=2;
+    }
+    function middleRun(){
+        num2--;
+        if(num2)return;
+        div1.style.left=div1.offsetLeft+3+"px";
+        num2=3;
+    }
+    function slowRun(){
+        num3--;
+        if(num3)return;
+        div2.style.left=div2.offsetLeft+6+"px";
+        num3=6;
+    }
+</script>
+</body>
+</html>

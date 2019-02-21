@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin:0;padding:0;}
+        ul{list-style:none;}
+    </style>
+</head>
+<ul></ul>
+<body>
+<script>
+    let ul;
+    let n=2;
+    let Height=[];
+    const NUM=5;
+    init();
+    function init(){
+        ul=document.querySelector("ul");
+        for(let i=0;i<NUM;i++){
+            let lis=document.createElement("li");
+            lis.style.border="1px solid #000";
+            lis.style.marginLeft="10px";
+            lis.style.float="left"
+            lis.style.width=(document.documentElement.clientWidth-18*NUM)/NUM+"px";
+            Height.push(0);//设置初始高度为0
+            ul.appendChild(lis);
+        }
+        img=new Image();
+        img.addEventListener("load",loadHandler);
+        img.src="images/"+n+"-.jpg";
+        document.addEventListener("scroll",scrollHandler);
+    }
+    function loadHandler(){
+                var box=this.cloneNode(false);
+                var min=Math.min.apply(null,Height);
+                var index=Height.indexOf(min);
+                ul.children[index].appendChild(box)
+                box.style.width=box.parentElement.clientWidth+"px";
+                Height[index]=ul.children[index].clientHeight;
+                if((document.documentElement.scrollHeight-document.documentElement.scrollTop)/document.documentElement.clientHeight>4){
+                    return;
+                }
+                n++
+                backAll();
+    }
+    function scrollHandler(){
+        if((document.documentElement.scrollHeight-document.documentElement.scrollTop)/document.documentElement.clientHeight<2){
+            backAll();
+        }
+    }
+    function backAll(){
+        if(n===79){
+            n=2;
+        }
+        img.src="images/"+n+"-.jpg";
+
+    }
+</script>
+</body>
+</html>

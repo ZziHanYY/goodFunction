@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/jquery/dist/jquery.js" type="text/javascript"></script>
+    <style>
+        div{width:100px;height:100px;background:blue;position:absolute;}
+    </style>
+</head>
+<div></div>
+<body>
+<script>
+    $("div").animate({"left":"400px"},1000,autoMove);
+    function autoMove(){
+        $(this).animate({"top":"400px"},1000,function(){
+            $(this).animate({"left":"0px"},1000,function(){
+                $(this).animate({"top":"0px"},1000,function(){
+                    $(this).animate({"left":"400px"},1000,autoMove)
+                })
+            })
+        })
+
+    }
+</script>
+</body>
+</html>

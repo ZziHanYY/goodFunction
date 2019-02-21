@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin:0;padding:0;}
+        ul{list-style:none;display:none;position:absolute;z-index:1;}
+        li{cursor:default;width:100px;height:50px;font-size:30px;color:red;background:blue;text-align:center;line-height:50px;}
+        li:hover{background:green;}
+        div{width:50px;height:50px;position:absolute;}
+    </style>
+</head>
+<body>
+<ul>
+    <li>新建</li>
+    <li>复制</li>
+    <li>粘贴</li>
+    <li>剪切</li>
+    <li>删除</li>
+</ul>
+<script>
+    var ul,dbl,conpy;
+    init();
+    function init(){
+        ul=document.querySelector("ul");
+        document.addEventListener("contextmenu",contextmenuHandler);
+        ul.addEventListener("mouseleave",mouseleaveHandler);
+        ul.addEventListener("click",clickHandler);
+
+    }
+    function mouseleaveHandler(e){
+        ul.style.display="none";
+    }
+    function contextmenuHandler(e){
+        e.preventDefault();
+        ul.style.display="block"
+        ul.style.left=e.x-10+"px";
+        ul.style.top=e.y-20+"px";
+    }
+    function clickHandler(e){
+        ul.style.display="none";
+        switch(e.target.textContent){
+            case "新建":
+                createDiv(e.x,e.y)
+                break
+            case "复制":
+            if(!dbl)return;
+             conpy=dbl.cloneNode(false);
+             conpy.style.border="none"
+                break
+            case "粘贴":
+                if(!conpy)return
+                document.body.appendChild(conpy);
+                conpy.style.left=e.x-25+"px";
+                conpy.style.top=e.y-25+"px";
+                conpy.addEventListener("dblclick",dblclickHandler)
+                conpy=null;
+                break
+            case "剪切":
+                if(!dbl)return;
+                conpy=dbl.cloneNode(false);
+                conpy.style.border="none"
+            case "删除":
+                if(!dbl)return;
+                dbl.style.display="none";
+                dbl.removeEventListener("mousedown",mouserHandler)
+                dbl.remove();
+                dbl=null
+                break
+        }
+    }
+    function createDiv(x,y){
+        var div=document.createElement("div");
+        document.body.appendChild(div);
+        str="background:rgba(";
+        str+=Math.floor(Math.random()*255)+","
+        str+=Math.floor(Math.random()*255)+","
+        str+=Math.floor(Math.random()*255)+","
+        str+="1)"
+        div.style=str;
+        div.style.left=x-25+"px";
+        div.style.top=y-25+"px";
+        div.addEventListener("dblclick",dblclickHandler)
+    }
+    function dblclickHandler(e){
+        if(dbl){
+            dbl.style.border="none";
+            dbl.removeEventListener("mousedown",mouserHandler)
+        }
+            dbl=this;
+            dbl.style.border="1px solid #000"
+            dbl.addEventListener("mousedown",mouserHandler)
+    }
+
+    function mouserHandler(e){
+        if(e.type==="mousedown"){
+            document.addEventListener("mousemove",mouserHandler);
+            this.addEventListener("mouseup",mouserHandler);
+            this.addEventListener("mouseleave",mouserHandler);
+            document.div=this
+            document.point={a:e.offsetX,b:e.offsetY}
+            e.preventDefault();
+        }else if(e.type==="mousemove"){
+
+            document.div.style.left=e.x-this.point.a+"px";
+            document.div.style.top=e.y-this.point.b+"px";
+        }else if(e.type==="mouseup"){
+            this.removeEventListener("mouseup",mouserHandler)
+            document.removeEventListener("mousemove",mouserHandler)
+            document.div=null;
+            document.point=null;
+        }
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:daf7437383ac4c4ee82f0c9df6f17981$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+-->
+<TextureAtlas imagePath="common.png" width="1024" height="512">
+    <sprite n="com_back" x="340" y="56" w="43" h="43" oX="16" oY="16" oW="77" oH="77"/>
+    <sprite n="com_bbox_1" x="153" y="292" w="25" h="78"/>
+    <sprite n="com_bbox_2" x="126" y="292" w="25" h="78"/>
+    <sprite n="com_bbox_3" x="182" y="164" w="25" h="78"/>
+    <sprite n="com_btn_00" x="595" y="186" w="144" h="52"/>
+    <sprite n="com_btn_01" x="872" y="132" w="144" h="52"/>
+    <sprite n="com_btn_03" x="693" y="132" w="91" h="52"/>
+    <sprite n="com_btn_04" x="600" y="132" w="91" h="52"/>
+    <sprite n="com_btn_05" x="188" y="292" w="285" h="65"/>
+    <sprite n="com_btn_06" x="328" y="103" w="182" h="52"/>
+    <sprite n="com_cancel" x="828" y="104" w="35" h="35" oX="16" oY="16" oW="69" oH="69"/>
+    <sprite n="com_dec_0" x="536" y="444" w="64" h="65"/>
+    <sprite n="com_dec_1" x="470" y="444" w="64" h="65"/>
+    <sprite n="com_dec_10" x="292" y="56" w="46" h="45"/>
+    <sprite n="com_dec_11" x="505" y="241" w="45" h="45"/>
+    <sprite n="com_dec_12" x="17" y="429" w="43" h="17"/>
+    <sprite n="com_dec_2" x="529" y="175" w="64" h="64"/>
+    <sprite n="com_dec_3" x="475" y="291" w="64" h="64"/>
+    <sprite n="com_dec_4" x="471" y="359" w="45" h="19"/>
+    <sprite n="com_dec_5" x="424" y="359" w="45" h="19"/>
+    <sprite n="com_dec_6" x="375" y="359" w="47" h="21"/>
+    <sprite n="com_dec_7" x="326" y="359" w="47" h="21"/>
+    <sprite n="com_dec_8" x="244" y="56" w="46" h="45"/>
+    <sprite n="com_dec_9" x="198" y="244" w="45" h="45"/>
+    <sprite n="com_dec_line_0" x="39" y="418" w="5" h="9"/>
+    <sprite n="com_dec_line_1" x="32" y="418" w="5" h="9"/>
+    <sprite n="com_dec_line_2" x="124" y="56" w="5" h="10"/>
+    <sprite n="com_dec_line_3" x="1007" y="1" w="13" h="5"/>
+    <sprite n="com_dec_line_4" x="131" y="63" w="19" h="5"/>
+    <sprite n="com_dec_line_5" x="131" y="56" w="24" h="5"/>
+    <sprite n="com_info_0" x="589" y="241" w="35" h="35" oX="16" oY="16" oW="69" oH="69"/>
+    <sprite n="com_info_1" x="552" y="241" w="35" h="35" oX="16" oY="16" oW="69" oH="69"/>
+    <sprite n="com_panel_0" x="62" y="1" w="943" h="35"/>
+    <sprite n="com_plus" x="735" y="431" w="61" h="52"/>
+    <sprite n="com_search" x="672" y="431" w="61" h="52"/>
+    <sprite n="com_selection_0" x="475" y="56" w="41" h="41" oX="16" oY="16" oW="75" oH="75"/>
+    <sprite n="com_selection_1" x="560" y="56" w="39" h="39" oX="17" oY="17" oW="75" oH="75"/>
+    <sprite n="com_tags_0" x="394" y="382" w="164" h="60"/>
+    <sprite n="com_tags_1" x="228" y="385" w="164" h="60"/>
+    <sprite n="commo_an_0" x="797" y="38" w="208" h="64"/>
+    <sprite n="commo_an_0_x" x="347" y="241" w="156" h="48"/>
+    <sprite n="commo_an_0_x_h" x="858" y="186" w="156" h="50"/>
+    <sprite n="commo_an_1" x="124" y="104" w="202" h="58"/>
+    <sprite n="commo_an_2" x="541" y="288" w="166" h="58"/>
+    <sprite n="commo_an_3" x="94" y="254" w="102" h="36"/>
+    <sprite n="commo_bj" x="794" y="104" w="32" h="26" oX="1" oY="0" oW="34" oH="26"/>
+    <sprite n="commo_btn_00" x="595" y="186" w="144" h="52"/>
+    <sprite n="commo_btn_01" x="872" y="132" w="144" h="52"/>
+    <sprite n="commo_btn_02" x="369" y="175" w="158" h="64" oX="0" oY="10" oW="158" oH="74"/>
+    <sprite n="commo_btn_03" x="209" y="175" w="158" h="64" oX="0" oY="10" oW="158" oH="74"/>
+    <sprite n="commo_btn_04" x="602" y="56" w="178" h="64"/>
+    <sprite n="commo_btn_05" x="290" y="447" w="178" h="64"/>
+    <sprite n="commo_btn_gbx_0" x="518" y="136" w="37" h="37" oX="10" oY="10" oW="57" oH="57"/>
+    <sprite n="commo_btn_gbx_1" x="296" y="241" w="49" h="49"/>
+    <sprite n="commo_btn_gbx_2" x="245" y="241" w="49" h="49"/>
+    <sprite n="commo_btn_gbx_3" x="557" y="137" w="36" h="36" oX="10" oY="15" oW="56" oH="56"/>
+    <sprite n="commo_btn_xian_0" x="124" y="52" w="659" h="2" oX="4" oY="0" oW="667" oH="2"/>
+    <sprite n="commo_btn_xian_1" x="124" y="38" w="671" h="12"/>
+    <sprite n="commo_by" x="180" y="360" w="32" h="24" oX="0" oY="1" oW="34" oH="26"/>
+    <sprite n="commo_d" x="560" y="97" w="38" h="38"/>
+    <sprite n="commo_hg_a" x="246" y="359" w="30" h="24"/>
+    <sprite n="commo_hg_l" x="214" y="359" w="30" h="24"/>
+    <sprite n="commo_ht" x="1007" y="8" w="12" h="74"/>
+    <sprite n="commo_ht_x" x="1007" y="84" w="12" h="46"/>
+    <sprite n="commo_ht_xs" x="180" y="292" w="6" h="66"/>
+    <sprite n="commo_jb" x="694" y="348" w="32" h="26" oX="0" oY="0" oW="34" oH="26"/>
+    <sprite n="commo_jt" x="518" y="96" w="38" h="38"/>
+    <sprite n="commo_jt_h" x="166" y="70" w="40" h="32"/>
+    <sprite n="commo_jt_l" x="124" y="70" w="40" h="32"/>
+    <sprite n="commo_jz" x="518" y="56" w="38" h="38"/>
+    <sprite n="commo_s" x="32" y="98" w="28" h="34"/>
+    <sprite n="commo_s_an" x="32" y="62" w="28" h="34"/>
+    <sprite n="commo_scroll" x="1" y="1" w="14" h="445"/>
+    <sprite n="commo_scroll2" x="17" y="1" w="13" h="426"/>
+    <sprite n="commo_sx_jt" x="278" y="359" w="12" h="24"/>
+    <sprite n="commo_tag_00" x="32" y="166" w="60" h="124"/>
+    <sprite n="commo_tag_01" x="62" y="38" w="60" h="124"/>
+    <sprite n="commo_tx+" x="660" y="348" w="32" h="26"/>
+    <sprite n="commo_tx-" x="626" y="348" w="32" h="26"/>
+    <sprite n="commo_tx_s" x="32" y="292" w="92" h="92"/>
+    <sprite n="commo_xz" x="786" y="141" w="70" h="52"/>
+    <sprite n="commo_xz_l" x="602" y="434" w="68" h="54"/>
+    <sprite n="commo_xz_r" x="560" y="378" w="68" h="54"/>
+    <sprite n="commo_yb" x="292" y="359" w="32" h="22" oX="0" oY="2" oW="34" oH="26"/>
+    <sprite n="jfzb_xz" x="1" y="448" w="121" h="63" oX="0" oY="46" oW="121" oH="121"/>
+    <sprite n="lt_hy_vip" x="208" y="70" w="34" h="32"/>
+    <sprite n="menu_sq" x="94" y="164" w="86" h="88" oX="9" oY="0" oW="100" oH="100"/>
+    <sprite n="n_get_d" x="541" y="348" w="26" h="28"/>
+    <sprite n="n_get_e" x="569" y="348" w="55" h="26"/>
+    <sprite n="newvip_bar" x="32" y="1" w="28" h="59"/>
+    <sprite n="newvip_bar_bottom" x="32" y="386" w="28" h="30"/>
+    <sprite n="newvip_bar_top" x="32" y="134" w="28" h="30"/>
+    <sprite n="npc_an" x="385" y="56" w="68" h="42"/>
+    <sprite n="sc_btn_0" x="124" y="448" w="164" h="60"/>
+    <sprite n="sc_btn_1" x="62" y="386" w="164" h="60"/>
+    <sprite n="silver_0" x="388" y="157" w="10" h="16"/>
+    <sprite n="silver_1" x="400" y="157" w="6" h="16" oX="2" oY="0" oW="10" oH="16"/>
+    <sprite n="silver_2" x="376" y="157" w="10" h="16"/>
+    <sprite n="silver_3" x="364" y="157" w="10" h="16"/>
+    <sprite n="silver_4" x="352" y="157" w="10" h="16"/>
+    <sprite n="silver_5" x="340" y="157" w="10" h="16"/>
+    <sprite n="silver_6" x="328" y="157" w="10" h="16"/>
+    <sprite n="silver_7" x="782" y="88" w="10" h="16"/>
+    <sprite n="silver_8" x="782" y="70" w="10" h="16"/>
+    <sprite n="silver_9" x="785" y="52" w="10" h="16"/>
+    <sprite n="upgrade_succ" x="630" y="376" w="240" h="53"/>
+</TextureAtlas>

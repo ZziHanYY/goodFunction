@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Ball(r,bg){
+        this._r=10;
+        this._bg=this.bgColor();
+        if(r){
+            this._r=r
+        };
+        if(bg){
+            this._bg=bg
+        }
+        this.arr=[];
+        document.addEventListener("click",this.documentClickHandler.bind(this));
+    }
+    Ball.prototype={
+        ball:null,
+        box:null,
+        createDiv:function(){
+            this.ball=document.createElement("div");
+            document.body.appendChild(this.ball);
+            this.ball.style.width=this._r*2+"px";
+            this.ball.style.height=this._r*2+"px";
+            this.ball.style.borderRadius=this._r+"px";
+            this.ball.style.position="absolute";
+            this.ball.style.background=this._bg;
+            this.ball.style.transition="all 1s";
+            this.ball.style.left=this.sizePx("left")
+            this.ball.style.top=this.sizePx("top")
+            this.ball.ball=false;
+            this.ball.addEventListener("click",this.ballClickHandler.bind(this))
+            this.arr.push(this.ball)
+            return this.ball
+        },
+        sizePx:function(w){
+            if(w==="left"){
+                return Math.floor(Math.random()*1300)+"px"
+            }else if(w==="top"){
+                return Math.floor(Math.random()*600)+"px"
+            }
+        },
+        ballClickHandler:function(e){
+            e.stopPropagation();
+            this.box=e.currentTarget
+            this.arr.map(function(item){
+                  if(this.box===item){
+                      item.bool=!item.bool
+                  }else{
+                      item.bool=false;
+                  }
+            }.bind(this))
+
+        },
+        documentClickHandler:function(e){
+            var res=this.arr.some(function(item){
+                return item.bool
+            })
+            if(res){
+                this.arr.map(function(item){
+                    if(item===this.box){
+                        this.box.style.left=e.x-item.clientWidth/2+"px";
+                        this.box.style.top=e.pageY-item.clientWidth/2+"px";
+                    }
+                }.bind(this))
+            }else {
+             //   if(e.target.tagName=="DIV")return
+                this.arr.map(function(item){
+                    item.style.left=e.x-item.clientWidth/2+"px";
+                    item.style.top=e.pageY-item.clientHeight/2+"px";
+                }.bind(this))
+            }
+
+        },
+        bgColor:function(){
+            var str="rgba("
+            str+=Math.floor(Math.random()*255)+","
+            str+=Math.floor(Math.random()*255)+","
+            str+=Math.floor(Math.random()*255)+","
+            str+=(Math.random()*0.5+0.5).toFixed(1)+")"
+            return str
+        }
+    }
+
+    var b= new Ball(30);
+    for(var i=0;i<10;i++){
+
+        b.createDiv();
+    }
+</script>
+</body>
+</html>

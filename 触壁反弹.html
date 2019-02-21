@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        #div0{width:499px;height:500px;border:1px solid black;}
+        #div1{width:50px;background:red;height:50px;border-radius:50%;position:absolute;}
+
+    </style>
+</head>
+<body>
+<div id="div0">
+    <div id="div1"></div>
+</div>
+<script>
+        let div1,rect0,rect1;
+        let bool=false;
+        let n=2;
+        let s=3;
+
+        init();
+        function init(){
+            div1=document.querySelector("#div1");
+            div0=document.querySelector("#div0");
+            div1.addEventListener("click",clickHandler)
+
+        }
+        function clickHandler(e){
+            bool=!bool;
+            if(bool){
+                animation()
+            }else if(!bool){
+                cancelAnimationFrame(id);
+            }
+        }
+        rect=div0.getBoundingClientRect();
+        function animation(){
+            id=requestAnimationFrame(animation);
+
+             if(div1.offsetLeft>=rect.right-div1.offsetWidth || div1.offsetLeft<rect.x){
+                n=-n;
+             }
+            if(div1.offsetTop>=rect.bottom-div1.offsetHeight || div1.offsetTop<rect.y){
+                s=-s;
+            }
+             div1.style.left=div1.offsetLeft+n+"px";
+             div1.style.top=div1.offsetTop+s+"px";
+        }
+</script>
+</body>
+</html>
